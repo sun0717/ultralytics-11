@@ -7,7 +7,7 @@ mode: train # (str) YOLO mode, i.e. train, val, predict, export, track, benchmar
 # Train settings -------------------------------------------------------------------------------------------------------
 model: # (str, optional) path to model file, i.e. yolov8n.pt, yolov8n.yaml
 data: # (str, optional) path to data file, i.e. coco8.yaml
-epochs: 100 # (int) number of epochs to train for
+epochs: 300 # (int) number of epochs to train for
 time: # (float, optional) number of hours to train for, overrides epochs if supplied
 patience: 100 # (int) epochs to wait for no observable improvement for early stopping of training
 batch: 16 # (int) number of images per batch (-1 for AutoBatch)
@@ -23,7 +23,7 @@ exist_ok: False # (bool) whether to overwrite existing experiment
 pretrained: True # (bool | str) whether to use a pretrained model (bool) or a model to load weights from (str)
 optimizer: auto # (str) optimizer to use, choices=[SGD, Adam, Adamax, AdamW, NAdam, RAdam, RMSProp, auto]
 verbose: True # (bool) whether to print verbose output
-seed: 0 # (int) random seed for reproducibility
+seed: 3407 # (int) random seed for reproducibility
 deterministic: True # (bool) whether to enable deterministic mode
 single_cls: False # (bool) train multi-class data as single-class
 rect: False # (bool) rectangular training if mode='train' or rectangular validation if mode='val'
