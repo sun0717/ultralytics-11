@@ -670,7 +670,8 @@ def check_amp(model):
     try:
         from ultralytics import YOLO
 
-        assert amp_allclose(YOLO("yolov8n.pt"), im)
+        # assert amp_allclose(YOLO("yolov8n.pt"), im)
+        return False
         LOGGER.info(f"{prefix}checks passed ✅")
     except ConnectionError:
         LOGGER.warning(f"{prefix}checks skipped ⚠️, offline and unable to download YOLOv8n. {warning_msg}")
