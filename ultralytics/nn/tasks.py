@@ -83,6 +83,9 @@ from ultralytics.utils.torch_utils import (
     time_sync,
 )
 
+# sun add here ASFF
+from .modules.ASFFhead import Detect_ASFF
+
 try:
     import thop
 except ImportError:
@@ -256,7 +259,8 @@ class BaseModel(nn.Module):
         """
         self = super()._apply(fn)
         m = self.model[-1]  # Detect()
-        if isinstance(m, Detect):  # includes all Detect subclasses like Segment, Pose, OBB, WorldDetect
+        # sun add here ASFF
+        if isinstance(m, (Detect, Detect_ASFF)):  # includes all Detect subclasses like Segment, Pose, OBB, WorldDetect
             m.stride = fn(m.stride)
             m.anchors = fn(m.anchors)
             m.strides = fn(m.strides)
@@ -322,10 +326,11 @@ class DetectionModel(BaseModel):
 
         # Build strides
         m = self.model[-1]  # Detect()
-        if isinstance(m, Detect):  # includes all Detect subclasses like Segment, Pose, OBB, WorldDetect
+        # sun add here ASFF
+        if isinstance(m, (Detect, Detect_ASFF)):  # includes all Detect subclasses like Segment, Pose, OBB, WorldDetect
             s = 256  # 2x min stride
             m.inplace = self.inplace
-
+            
             def _forward(x):
                 """Performs a forward pass through the model, handling different Detect subclass types accordingly."""
                 if self.end2end:
@@ -1041,7 +1046,8 @@ def parse_model(d, ch, verbose=True):  # model_dict, input_channels(3)
             args = [ch[f]]
         elif m is Concat:
             c2 = sum(ch[x] for x in f)
-        elif m in {Detect, WorldDetect, Segment, Pose, OBB, ImagePoolingAttn, v10Detect}:
+        # sun add here ASFF
+        elif m in {Detect, WorldDetect, Segment, Pose, OBB, ImagePoolingAttn, v10Detect, Detect_ASFF}:
             args.append([ch[x] for x in f])
             if m is Segment:
                 args[2] = make_divisible(min(args[2], max_channels) * width, 8)
@@ -1134,6 +1140,9 @@ def guess_model_task(model):
             return "pose"
         if m == "obb":
             return "obb"
+        # sun add here
+        else:
+            return 'detect'
 
     # Guess from model cfg
     if isinstance(model, dict):
@@ -1150,7 +1159,10 @@ def guess_model_task(model):
                 return cfg2task(eval(x))
 
         for m in model.modules():
-            if isinstance(m, Segment):
+            # sun add here ASFF
+            if isinstance(m, (Detect, WorldDetect, v10Detect, Detect_ASFF)):
+                return 'detect'
+            elif isinstance(m, Segment):
                 return "segment"
             elif isinstance(m, Classify):
                 return "classify"
@@ -1158,8 +1170,9 @@ def guess_model_task(model):
                 return "pose"
             elif isinstance(m, OBB):
                 return "obb"
-            elif isinstance(m, (Detect, WorldDetect, v10Detect)):
-                return "detect"
+            # sun update here ASFF
+            # elif isinstance(m, (Detect, WorldDetect, v10Detect)):
+            #     return "detect"
 
     # Guess from model filename
     if isinstance(model, (str, Path)):
