@@ -85,6 +85,7 @@ from .transformer import (
     TransformerEncoderLayer,
     TransformerLayer,
 )
+from .ASFFhead import Detect_ASFF
 
 __all__ = (
     "Conv",
@@ -156,4 +157,5 @@ __all__ = (
     "C2fCIB",
     "Attention",
     "PSA",
+    "Detect_ASFF"
 )
