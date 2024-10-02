@@ -86,6 +86,7 @@ from .transformer import (
     TransformerLayer,
 )
 from .ASFFhead import Detect_ASFF
+from .CAFMAttention import CAFMAttention
 
 __all__ = (
     "Conv",
@@ -157,5 +158,6 @@ __all__ = (
     "C2fCIB",
     "Attention",
     "PSA",
-    "Detect_ASFF"
+    "Detect_ASFF",
+    "CAFMAttention"
 )

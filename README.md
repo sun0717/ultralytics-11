@@ -8,4 +8,9 @@ docs: 更新readme日志
 ## 训练规范
 日期、模块名称、batch、mAP、存储地址
 ### 9-30
-feat: ASFF modules - 16 - 
+base11s - 16 - 0.395 - runs/detect/train3 
+base11m - 16 - 0.408 - runs/detect/train4
+### 10-02
+feat: ASFF modules - 16 - 0.405 - runs/detect/train5
+
+feat: CAFM modules - 16 - 
