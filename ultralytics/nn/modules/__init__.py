@@ -88,6 +88,7 @@ from .transformer import (
 from .ASFFhead import Detect_ASFF
 from .CAFMAttention import CAFMAttention
 from .MambaBlock import mamba_block, Gated_Fusion, downsample
+from .EVCBlock import EVCBlock
 
 __all__ = (
     "Conv",
@@ -160,5 +161,6 @@ __all__ = (
     "Attention",
     "PSA",
     "Detect_ASFF",
-    "CAFMAttention"
+    "CAFMAttention",
+    "EVCBlock"
 )
