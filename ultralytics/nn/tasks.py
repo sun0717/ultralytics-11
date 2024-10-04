@@ -62,7 +62,11 @@ from ultralytics.nn.modules import (
     v10Detect,
     Detect_ASFF,
     # sun add here CAFMAttention
-    CAFMAttention
+    CAFMAttention,
+    # sun add here Mamba
+    mamba_block,
+    Gated_Fusion,
+    downsample
 )
 from ultralytics.utils import DEFAULT_CFG_DICT, DEFAULT_CFG_KEYS, LOGGER, colorstr, emojis, yaml_load
 from ultralytics.utils.checks import check_requirements, check_suffix, check_yaml
@@ -1005,7 +1009,10 @@ def parse_model(d, ch, verbose=True):  # model_dict, input_channels(3)
             SCDown,
             C2fCIB,
             # sun add here CAFMAttention
-            CAFMAttention
+            CAFMAttention,
+            # sun add here MambaBlock
+            mamba_block,
+            downsample,
         }:
             c1, c2 = ch[f], args[0]
             if c2 != nc:  # if c2 not equal to number of classes (i.e. for Classify() output)
@@ -1032,6 +1039,8 @@ def parse_model(d, ch, verbose=True):  # model_dict, input_channels(3)
                 C2fPSA,
                 C2fCIB,
                 C2PSA,
+                # sun add here MambaBlock
+                mamba_block
             }:
                 args.insert(2, n)  # number of repeats
                 n = 1
@@ -1064,6 +1073,10 @@ def parse_model(d, ch, verbose=True):  # model_dict, input_channels(3)
             args = [c1, c2, *args[1:]]
         elif m is CBFuse:
             c2 = ch[f[-1]]
+        # sun add here MambaBlock
+        elif m is Gated_Fusion:
+            c1 = [ch[f[0]], ch[f[1]], ch[f[2]]]
+            c2 = ch[f[0]]
         else:
             c2 = ch[f]
 

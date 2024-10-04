@@ -13,4 +13,9 @@ base11m - 16 - 0.408 - runs/detect/train4
 ### 10-02
 feat: ASFF modules - 16 - 0.405 - runs/detect/train5
 
-feat: CAFM modules - 16 - 
+feat: CAFM modules - 16 - 0.392 - 16 层出去的 - runs/detect/train6
+
+### 10-03
+feat: CAFM modules - 16 - 0.403 - 17 层出去的 - runs/detect/train6
+### 10-04
+feat: cafm-asff - 16 - 0.394 - runs/detect/train8
