@@ -19,3 +19,7 @@ feat: CAFM modules - 16 - 0.392 - 16 层出去的 - runs/detect/train6
 feat: CAFM modules - 16 - 0.403 - 17 层出去的 - runs/detect/train6
 ### 10-04
 feat: cafm-asff - 16 - 0.394 - runs/detect/train8
+### 10-05
+feat: evc -16 - 0.396 - runs/detect/train9
+### 10-07
+feat: rtdetr - 8 - 
