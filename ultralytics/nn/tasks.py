@@ -68,7 +68,9 @@ from ultralytics.nn.modules import (
     Gated_Fusion,
     downsample,
     # sun add here EVCBlock
-    EVCBlock
+    EVCBlock,
+    # sun add here SPDConv
+    SPDConv
 )
 from ultralytics.utils import DEFAULT_CFG_DICT, DEFAULT_CFG_KEYS, LOGGER, colorstr, emojis, yaml_load
 from ultralytics.utils.checks import check_requirements, check_suffix, check_yaml
@@ -1083,6 +1085,8 @@ def parse_model(d, ch, verbose=True):  # model_dict, input_channels(3)
         elif m is Gated_Fusion:
             c1 = [ch[f[0]], ch[f[1]], ch[f[2]]]
             c2 = ch[f[0]]
+        elif m is SPDConv:
+            c2 = 4 * ch[f]
         else:
             c2 = ch[f]
 

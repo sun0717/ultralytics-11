@@ -22,4 +22,6 @@ feat: cafm-asff - 16 - 0.394 - runs/detect/train8
 ### 10-05
 feat: evc -16 - 0.396 - runs/detect/train9
 ### 10-07
-feat: rtdetr - 8 - 
+feat: rtdetr - 8 - 0.394 - runs/detect/train12
+### 10-08
+feat: 
