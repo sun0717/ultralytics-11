@@ -90,6 +90,7 @@ from .CAFMAttention import CAFMAttention
 from .MambaBlock import mamba_block, Gated_Fusion, downsample
 from .EVCBlock import EVCBlock
 from .SPDConv import SPDConv
+from .SCConv import ScConv
 
 __all__ = (
     "Conv",
@@ -164,5 +165,6 @@ __all__ = (
     "Detect_ASFF",
     "CAFMAttention",
     "EVCBlock",
-    "SPDConv"
+    "SPDConv",
+    "ScConv"
 )

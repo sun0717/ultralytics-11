@@ -70,7 +70,9 @@ from ultralytics.nn.modules import (
     # sun add here EVCBlock
     EVCBlock,
     # sun add here SPDConv
-    SPDConv
+    SPDConv,
+    # sun add here ScConv
+    ScConv
 )
 from ultralytics.utils import DEFAULT_CFG_DICT, DEFAULT_CFG_KEYS, LOGGER, colorstr, emojis, yaml_load
 from ultralytics.utils.checks import check_requirements, check_suffix, check_yaml
@@ -1087,6 +1089,10 @@ def parse_model(d, ch, verbose=True):  # model_dict, input_channels(3)
             c2 = ch[f[0]]
         elif m is SPDConv:
             c2 = 4 * ch[f]
+        # sun add here SCConv:
+        elif m is ScConv:
+            c1 = ch[f]
+            args = [c1, *args[0:]]
         else:
             c2 = ch[f]
 
