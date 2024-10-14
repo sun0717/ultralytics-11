@@ -26,4 +26,5 @@ feat: rtdetr - 8 - 0.394 - runs/detect/train12
 ### 10-08
 feat: SPDConv - 16- 0.396 - runs/detect/train13   (剪枝可用)
 ### 10-09
-feat: cleanScript & ScConv in backbone - 16 -   
+feat: cleanScript & ScConv in backbone - 16 - 0.408 - runs/detect/train13
+### 10-14
