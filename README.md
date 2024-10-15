@@ -28,3 +28,6 @@ feat: SPDConv - 16- 0.396 - runs/detect/train13   (剪枝可用)
 ### 10-09
 feat: cleanScript & ScConv in backbone - 16 - 0.408 - runs/detect/train13
 ### 10-14
+feat: scconv + asff - 16 - 0.4 -runs/detect/train15
+### 10-15
+feat: scconv
