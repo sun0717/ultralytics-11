@@ -72,7 +72,9 @@ from ultralytics.nn.modules import (
     # sun add here SPDConv
     SPDConv,
     # sun add here ScConv
-    ScConv
+    ScConv,
+    # sun add here C3k2ScConv
+    C2f_ScConv,
 )
 from ultralytics.utils import DEFAULT_CFG_DICT, DEFAULT_CFG_KEYS, LOGGER, colorstr, emojis, yaml_load
 from ultralytics.utils.checks import check_requirements, check_suffix, check_yaml
@@ -1020,7 +1022,8 @@ def parse_model(d, ch, verbose=True):  # model_dict, input_channels(3)
             mamba_block,
             downsample,
             # sun add here EVCBlock
-            EVCBlock
+            EVCBlock,
+            C2f_ScConv
         }:
             c1, c2 = ch[f], args[0]
             if c2 != nc:  # if c2 not equal to number of classes (i.e. for Classify() output)
@@ -1050,7 +1053,9 @@ def parse_model(d, ch, verbose=True):  # model_dict, input_channels(3)
                 # sun add here MambaBlock
                 mamba_block,
                 # sun add here EVCBlock
-                EVCBlock
+                EVCBlock,
+                # sun add here C3k2_ScConv
+                C2f_ScConv
             }:
                 args.insert(2, n)  # number of repeats
                 n = 1

@@ -56,6 +56,7 @@ from .block import (
     RepVGGDW,
     ResNetLayer,
     SCDown,
+    C2f_ScConv
 )
 from .conv import (
     CBAM,
@@ -166,5 +167,5 @@ __all__ = (
     "CAFMAttention",
     "EVCBlock",
     "SPDConv",
-    "ScConv"
+    "C2f_ScConv",
 )

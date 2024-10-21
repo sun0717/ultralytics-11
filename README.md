@@ -30,4 +30,5 @@ feat: cleanScript & ScConv in backbone - 16 - 0.408 - runs/detect/train13
 ### 10-14
 feat: scconv + asff - 16 - 0.4 -runs/detect/train15
 ### 10-15
-feat: scconv
+### 10-21
+feat: c2f-scconv - 16 - 0.379 -runs/detect/train18
