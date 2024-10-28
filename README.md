@@ -32,3 +32,14 @@ feat: scconv + asff - 16 - 0.4 -runs/detect/train15
 ### 10-15
 ### 10-21
 feat: c2f-scconv - 16 - 0.379 -runs/detect/train18
+### 10-22
+c3k2-scconv - 16 - 0.394 -runs/detect/train19
+改成两个 True 0.386 -runs/detect/train20
+### 10-23
+两个 False 0.5 - 0.392 - 16
+两个 False 0.25 - 0.394 - 16
+两个 False 1 - 0.389
+四个 False 0.25 - 0.387
+False True False True 0.25 - 0.39
+### 10-27
+True False True False 0.25 - 0.384

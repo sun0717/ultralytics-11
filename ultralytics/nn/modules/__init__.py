@@ -92,6 +92,7 @@ from .MambaBlock import mamba_block, Gated_Fusion, downsample
 from .EVCBlock import EVCBlock
 from .SPDConv import SPDConv
 from .SCConv import ScConv
+from .BiFPN import BiFPN_Concat2, BiFPN_Concat3
 
 __all__ = (
     "Conv",
@@ -168,4 +169,6 @@ __all__ = (
     "EVCBlock",
     "SPDConv",
     "C2f_ScConv",
+    "BiFPN_Concat2", 
+    "BiFPN_Concat3"
 )

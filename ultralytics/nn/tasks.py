@@ -75,6 +75,9 @@ from ultralytics.nn.modules import (
     ScConv,
     # sun add here C3k2ScConv
     C2f_ScConv,
+    # sun add here BiFPN
+    BiFPN_Concat2,
+    BiFPN_Concat3
 )
 from ultralytics.utils import DEFAULT_CFG_DICT, DEFAULT_CFG_KEYS, LOGGER, colorstr, emojis, yaml_load
 from ultralytics.utils.checks import check_requirements, check_suffix, check_yaml
@@ -1098,6 +1101,9 @@ def parse_model(d, ch, verbose=True):  # model_dict, input_channels(3)
         elif m is ScConv:
             c1 = ch[f]
             args = [c1, *args[0:]]
+        #sun add here bifpn:
+        elif m in [BiFPN_Concat2,BiFPN_Concat3]:
+            c2 = sum(ch[x] for x in f)
         else:
             c2 = ch[f]
 
